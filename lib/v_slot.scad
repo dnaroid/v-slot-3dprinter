@@ -6,7 +6,7 @@ translate([30,0,0]) extrusion_profile_20x20_v_slot_smooth(size=20, height=10);
 $fn = 30;
 
 module extrusion_profile_20x20_v_slot(size=20, height=10) {
-	linear_extrude(height=height) {
+	color([0.7,0.7,0.7]) linear_extrude(height=height) {
 		union() {
 			extrusion_profile_20x20_v_slot_part(size);
 			rotate([0,0,90])  extrusion_profile_20x20_v_slot_part(size);
@@ -55,7 +55,7 @@ module extrusion_profile_20x20_v_slot_part(size=20) {
 
 module extrusion_profile_20x20_v_slot_smooth(size=20, height=10) {
 	linear_extrude(height=height) {
-		difference() {	
+		difference() {
 			union() {
 				extrusion_profile_20x20_v_slot_part_smooth(size);
 				rotate([0,0,90])  extrusion_profile_20x20_v_slot_part_smooth(size);
