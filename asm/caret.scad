@@ -5,8 +5,8 @@ module caret_asm() {
   dy=-16;
   dz=12;
 
-  T(carX+dx,carY+dy,0+dz) Rz(90)
-    e3d_hot_end_assembly(hotEndType, 1.75, false);
+  T(car_x+dx, car_y+dy+railY_yo, 0+dz) Rz(-0)
+    e3d_hot_end_assembly(hotEnd_type, 1.75, false);
 
 }
 

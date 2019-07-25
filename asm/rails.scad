@@ -1,16 +1,26 @@
 module rails_asm() {
 
-  // teft
-  Rz(90) Ty(profileL/2-profileT/2)
-    rail_assembly(railTypeY, railYL, carY);
+  rzo = -30;
 
-  // right
-  Rz(90) Ty(-profileL/2+profileT/2)
-    rail_assembly(railTypeY, railYL, carY);
+  // left Y
+  Rz(90) T(railY_yo,profile_l/2-profile_t/2)
+    rail_assembly(railY_type, railY_l, car_y);
 
-  // center
-  T(0,carY+2,14) Rx(90)
-    rail_assembly(railTypeX, railXL, carX);
+  // right Y
+  Rz(90) T(railY_yo,-profile_l/2+profile_t/2)
+    rail_assembly(railY_type, railY_l, car_y);
+
+  // X
+  T(0,car_y+2+railY_yo,14) Rx(90)
+    rail_assembly(railX_type, railX_l, car_x);
+
+  // left Z
+  T(-profile_l/2 + profile_t, bed_yo, -railZ_l/2 - railZ_zo) Ry(90)
+    rail_assembly(railZ_type, railZ_l, -railZ_l/2-rzo-bed_z);
+
+  // right Z
+  T(profile_l/2 - profile_t, bed_yo, -railZ_l/2 - railZ_zo) R(0,90,180)
+    rail_assembly(railZ_type, railZ_l, -railZ_l/2-rzo-bed_z);
 
 }
 
