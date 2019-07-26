@@ -8,6 +8,7 @@ include <asm/rails.scad>
 include <asm/caret.scad>
 include <asm/bed.scad>
 include <asm/motors.scad>
+include <asm/belts.scad>
 
 T(60,profile_l) color("red") S(3) R(90,0,180)
   text("FRONT");

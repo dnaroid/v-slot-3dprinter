@@ -1,6 +1,6 @@
 car_y = 100;
 car_x = 100;
-bed_z = -0;
+bed_z = -150; // 0..-150
 
 profile_l = 300; // x8
 profileV_l = 200; // x6
@@ -11,7 +11,7 @@ railX_l = 300;
 railY_type = MGN9; // x2
 railY_l = 250;
 railY_yo = -15;
-railZ_type = MGN12; // x2
+railZ_type = MGN9; // x2
 railZ_l = 200;
 railZ_zo = 35;
 
