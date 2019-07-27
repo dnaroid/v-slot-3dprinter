@@ -1,6 +1,9 @@
 include <NopSCADlib/lib.scad>
+include <NopSCADlib/vitamins/e3d.scad>
+
 use <lib/shortcuts.scad>
 use <lib/v_slot.scad>
+use <lib/utils.scad>
 include <config.scad>
 
 include <asm/rim.scad>
@@ -13,5 +16,5 @@ include <asm/belts.scad>
 T(60,profile_l) color("red") S(3) R(90,0,180)
   text("FRONT");
 
-T(0, 130, -120)
-  #cube([300-40, 80, 200], true);
+//T(0, 130, -120)
+//  #cube([300-40, 80, 200], true);
