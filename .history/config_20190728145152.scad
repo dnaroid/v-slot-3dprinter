@@ -3,7 +3,7 @@
 // hide_hotend = 1;
 // hide_bed = 1;
 
-car_y = 100;
+car_y = -00;
 car_x = -00;
 bed_z = -00; // 0..-200
 
