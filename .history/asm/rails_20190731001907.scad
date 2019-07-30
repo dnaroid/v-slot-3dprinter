@@ -23,7 +23,7 @@ module rails_asm() {
   T(0, car_y + railY_yo, 1) {
     D() {
       Cu(long * 2, 45, 2);
-      Ty(-33) Cu(railX_l + 35, 48, 5);
+      Ty(-33) Cu(railX_l + 5, 48, 5);
     }
   }
   T(car_x, car_y + railY_yo - 12, -12)

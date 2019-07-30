@@ -32,7 +32,7 @@ bed_yo = -10;
 bed_zo = -60;
 
 motorXY_type = NEMA17;
-motorXY_x = (profile_l / 2)-5;
+motorXY_x = (profile_l / 2);
 motorXY_y = (profile_l / 2) + profile_t;
 motorXY_z = -10;
 motorZ_type = NEMA17;
