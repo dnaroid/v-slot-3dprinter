@@ -1,14 +1,24 @@
 module
 bed_asm()
 {
+    z = bed_z + bed_zo;
+
     glass_t = 3;
+    heater_t = 1.2;
+    iso_t = 10;
+
+    glass_z = z;
+    heater_z = glass_z - glass_t / 2 - heater_t / 2;
+    iso_z = heater_z - heater_t / 2-iso_t / 2;
 
     // glass
-    % T(0, bed_yo, bed_z + bed_zo) Cu(bed_s, bed_s, 3);
+    % T(0, bed_yo, glass_z) % C(0.5, 0.5, 0.5) Cu(bed_s, bed_s, glass_t);
 
-    // bed
-    T(0, bed_yo, bed_z + bed_zo - 3)
-    color([ 0.7, 0.7, 0.7 ]) Cu(bed_s, bed_s, 3);
+    // heater
+    T(0, bed_yo, heater_z) C("red") Cu(200, 200, heater_t);
+
+    // isolator
+    T(0, bed_yo, iso_z) C("white") Cu(210, 210, iso_t);
 
     T(screw_xo, bed_yo, screw_z)
     t8(screw_l, bed_z + 7);
@@ -39,4 +49,6 @@ bed_asm()
 
 if (!hide_bed)
     bed_asm();
+
+
 

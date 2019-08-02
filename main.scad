@@ -1,10 +1,11 @@
 include <NopSCADlib/lib.scad>
 include <NopSCADlib/vitamins/e3d.scad>
 
+use <lib/materials.scad>
 use <lib/shortcuts.scad>
 
 include <config.scad>
-include <lib/utils.scad>
+include <lib/metal_parts.scad>
 use <lib/v_slot.scad>
 
 include <asm/bed.scad>

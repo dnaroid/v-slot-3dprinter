@@ -6,7 +6,7 @@ translate([30, 0, 0]) extrusion_profile_20x20_v_slot_smooth(size = 20, height = 
 $fn = 30;
 
 module extrusion_profile_20x20_v_slot(size = 20, height = 10) {
-	echo("2020 profile ", height);
+	echo("BOM: 2020 profile ", height);
 	color([0.7, 0.7, 0.7]) linear_extrude(height = height) {
 		union() {
 			extrusion_profile_20x20_v_slot_part(size);
