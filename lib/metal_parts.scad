@@ -70,4 +70,22 @@ t8_nut()
     BRASS() import_stl("models/T8NUT.stl", convexity = 5);
 }
 
+module
+nema17_damper()
+{
+    echo("BOM: nema17 damper");
+    Tz(3) BRASS() Cu(42, 42, 6);
+}
+
+module
+nema17_L_bracket()
+{
+    echo("BOM: nema17 damper");
+    color("black") Ry(90) T(-2, -30, -25)
+        import_stl("models/nema17_L_bracket.stl", convexity = 5);
+}
+
+
+
+
 
