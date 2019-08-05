@@ -41,7 +41,15 @@ rails_asm()
     // right Z
     T(hpl, bed_yo, -railZ_l / 2 - railZ_zo)
     R(0, 90, 180)
-        rail_assembly(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
+    rail_assembly(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
     T(hpl - railY_car_h, bed_yo, bed_z + bed_zo - 25)
     Rz(90) corn(bed_s + 10, 2, 20);
-    T(0, bed_yo, bed_z + bed_zo - 25 + 2)    Cu((hpl - railY_car_h) * 2 - 4, bed_s + 10, 2);}rails_asm();
+
+    T(0, bed_yo, bed_z + bed_zo - 26)
+    Cu((hpl - railY_car_h) * 2 - 4, bed_s + 10, 2);
+}
+
+rails_asm();
+
+
+

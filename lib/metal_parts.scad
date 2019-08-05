@@ -12,12 +12,12 @@ module corn(l = 10, t = 2, s1 = 20, s2)
     }
 }
 
-module t8(l, pos)
+module t8(l, pos, rot=0)
 {
     echo("BOM: T8 screw", l);
     STEEL() Tz(-l / 2) Cy(4, l);
 
-    Tz(pos) t8_nut();
+    Tz(pos) Rx(rot) t8_nut();
 }
 
 module draw_belt(from, to, a, pr = 6)
@@ -74,7 +74,11 @@ module
 nema17_damper()
 {
     echo("BOM: nema17 damper");
-    Tz(3) BRASS() Cu(42, 42, 6);
+    R(90, 0, 45)
+    BRASS() import_stl("models/nema17_damper.stl", convexity = 5);
+    R(90, 0, -45)
+    Ty(-4) BRASS() import_stl("models/nema17_damper.stl", convexity = 5);
+    color("black") Tz(3) Ri(12, 10, 6);
 }
 
 module
@@ -84,6 +88,8 @@ nema17_L_bracket()
     color("black") Ry(90) T(-2, -30, -25)
         import_stl("models/nema17_L_bracket.stl", convexity = 5);
 }
+
+
 
 
 

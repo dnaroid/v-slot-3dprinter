@@ -2,6 +2,9 @@ module
 rim_asm()
 {
 
+    bz = -vl - pt - hpt;
+    cz = -vl - pt + hpt;
+
     //// top
 
     // left
@@ -45,26 +48,26 @@ rim_asm()
     //// bottom
 
     // left
-    Rx(90) T(long, -vl - pt - hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    Rx(90) T(long, bz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // right
-    Rx(90) T(-long, -vl - pt - hpt, -hpl)
-        extrusion_profile_20x20_v_slot(pt, pl);
+    Rx(90) T(-long, bz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // front
     R(90, 0, 90)
-    T(short, -vl - pt + hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    T(short, cz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // back
     R(90, 0, 90)
-    T(-short, -vl - pt - hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    T(-short, bz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // center
     R(90, 0, 90)
-    T(bed_yo, -vl - pt + hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    T(bed_yo, cz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 }
 
 rim_asm();
+
 
 
 
