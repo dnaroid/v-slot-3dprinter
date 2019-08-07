@@ -24,7 +24,7 @@ module draw_belt(from, to, a, pr = 6)
 {
     echo("BOM: GT2 belt part",
          sqrt(pow(from[0] - to[0], 2) + pow(from[1] - to[1], 2)));
-    color("black")
+    C(0.3,0.3,0.3)
     {
         hull()
         {
@@ -88,6 +88,33 @@ nema17_L_bracket()
     color("black") Ry(90) T(-2, -30, -25)
         import_stl("models/nema17_L_bracket.stl", convexity = 5);
 }
+
+
+module
+titan_extruder()
+{
+    echo("BOM: titan extruder");
+    C(0.3,0.3,0.3)
+        import_stl("models/titan.stl", convexity = 5);
+}
+
+module
+blower_4010()
+{
+    echo("BOM: blower 4010");
+    C(0.3,0.3,0.3)
+    import_stl("models/4010_blower_fan.stl", convexity = 5);
+}
+
+module
+fan_3010()
+{
+    echo("BOM: fan 3010");
+    // C(0.3,0.3,0.3)
+    fan(fan30x10);
+}
+
+
 
 
 

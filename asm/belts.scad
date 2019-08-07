@@ -2,7 +2,7 @@ module
 belts_asm()
 {
     pz = 5;
-    pzu = pz + 12;
+    pzu = pz + 11;
 
     screwR = 1.5;
 

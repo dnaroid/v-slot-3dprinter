@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset='utf-8'>
+  <title></title>
+  <meta name='author' content=''>
+  <meta name='description' content=''>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <style rel='stylesheet'>
+    #container {
+      margin: 40px auto 0 auto;
+      width: fit-content;
+    }
+
+    img {
+      display: block;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+
+<body>
+<div id='container'></div>
+
+<script type='text/javascript'>
+  const render = () => {
+    const tracks = (window.location.search || '').replace(/^\?|\s/g, '').split(',')
+    const container = document.getElementById('container')
+
+    for (const track of tracks) {
+      const img = document.createElement('img')
+      img.setAttribute('src',
+        `https://barcode.tec-it.com/barcode.ashx?data=${track}&code=Code128&multiplebarcodes=false&translate-esc=false&unit=Fit&dpi=96&imagetype=Gif&rotation=0&color=%23000000&bgcolor=%23ffffff&qunit=Mm&quiet=0`)
+      container.appendChild(img)
+    }
+  }
+  document.addEventListener('DOMContentLoaded', render)
+</script>
+</body>
+</html>
