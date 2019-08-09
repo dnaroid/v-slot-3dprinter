@@ -12,7 +12,7 @@ module corn(l = 10, t = 2, s1 = 20, s2)
     }
 }
 
-module t8(l, pos, rot=0)
+module t8(l, pos, rot = 0)
 {
     echo("BOM: T8 screw", l);
     STEEL() Tz(-l / 2) Cy(4, l);
@@ -24,7 +24,7 @@ module draw_belt(from, to, a, pr = 6)
 {
     echo("BOM: GT2 belt part",
          sqrt(pow(from[0] - to[0], 2) + pow(from[1] - to[1], 2)));
-    C(0.3,0.3,0.3)
+    C(0.3, 0.3, 0.3)
     {
         hull()
         {
@@ -89,20 +89,19 @@ nema17_L_bracket()
         import_stl("models/nema17_L_bracket.stl", convexity = 5);
 }
 
-
 module
 titan_extruder()
 {
     echo("BOM: titan extruder");
-    C(0.3,0.3,0.3)
-        import_stl("models/titan.stl", convexity = 5);
+    C(0.3, 0.3, 0.3)
+    import_stl("models/titan.stl", convexity = 5);
 }
 
 module
 blower_4010()
 {
     echo("BOM: blower 4010");
-    C(0.3,0.3,0.3)
+    C(0.3, 0.3, 0.3)
     import_stl("models/4010_blower_fan.stl", convexity = 5);
 }
 
@@ -110,15 +109,55 @@ module
 fan_3010()
 {
     echo("BOM: fan 3010");
-    // C(0.3,0.3,0.3)
     fan(fan30x10);
 }
 
+module rail(type, l, pos)
+{
+    echo("BOM: rail", type[0], l, "mm");
+    rail_assembly(type, l, pos);
+}
 
+module bolt(type, l = 10, nut, nuts)
+{
+    echo("BOM: screw", type[0], l, "mm");
+    screw(type, l);
+    if (nut != undef || nuts != undef) {
+        d = type[3];
+        head_h = type[5];
+        D = d == 2.5 ? 1 : d;
+        nutByD = [
+            undef,
+            M2p5_nut,
+            M2_nut,
+            M3_nut,
+            M4_nut,
+            M5_nut,
+            M6_nut,
+            undef,
+            M8_nut
+        ];
+        nut_type = nutByD[D];
+        nut_h = nut_type[3];
+        nut_zero_z = head_h / 2 - nut_h / 2;
+        if (nuts == undef) {
+            nuts = [nut];
+        }
 
+        for (h = nuts) {
+            echo("BOM: nut", nut_type[0]);
+            Tz(nut_zero_z - h) nut(nut_type);
+        }
+    }
+}
 
-
-
-
+module cutZ(s = 200, dir = 1, rz = 0)
+{
+    D()
+    {
+        children();
+        Rz(rz) Ty(dir * s / 2) Cu(s);
+    }
+}
 
 

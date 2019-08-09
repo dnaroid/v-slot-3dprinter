@@ -1,7 +1,7 @@
 module
 belts_asm()
 {
-    pz = 5;
+    pz = 6;
     pzu = pz + 11;
 
     screwR = 1.5;
@@ -24,7 +24,7 @@ belts_asm()
     ix = motorXY_x - pd + 1;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 8;
-    back_car_p_y = car_yo - railX_car_w / 2 - 6;
+    back_car_p_y = car_yo - railX_car_w / 2 - 10;
 
     pulleys = [[motorXY_x, motorXY_y, pzu, Tm, [180, 0]],  // motor L
                [ix, -short, pzu, Ti, [0, -90]],            // corn BL

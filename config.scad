@@ -3,18 +3,18 @@
 // hide_hotend = 1;
 // hide_bed = 1;
 
-car_y = 100;
-car_x = -00;
+car_y = -00;
+car_x = -000;
 bed_z = -200; // 0..-200
 
 profile_l = 300;  // x9
 profileV_l = 300; // x6  = x15
 profile_t = 20;
 
-railX_type = MGN9; // x5
+railX_type = MGN9H; // x5
 railX_l = 250;
 railX_support_t = 3;
-railY_type = MGN9;
+railY_type = MGN9H;
 railY_l = 250;
 railX_car_w = railX_type[9][2];
 railY_yo = 20;
@@ -22,7 +22,7 @@ railY_car_h = railY_type[9][3];
 railY_car_l = railY_type[9][0];
 railY_car_w = railY_type[9][2];
 railY_w = railY_type[1];
-railZ_type = MGN9;
+railZ_type = MGN9H;
 railZ_l = 250;
 railZ_zo = 35;
 

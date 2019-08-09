@@ -5,7 +5,7 @@ electric_asm()
     R(180, 0, 180)
     microswitch(medium_microswitch);
 
-    T(-short + 18, car_y - 10, 5)
+    T(-(short - 16), car_y + 3, 15)
     R(0, 0, -90)
     microswitch(medium_microswitch);
 }
