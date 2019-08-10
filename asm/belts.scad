@@ -22,17 +22,21 @@ belts_asm()
     car_yo = car_y + railY_yo;
 
     ix = motorXY_x - pd + 1;
+    ox = motorXY_x;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 8;
     back_car_p_y = car_yo - railX_car_w / 2 - 10;
 
+    T(ox + 4, -short, pzu - 19.5) Ry(-90) Rz(90) corn(20, 2, 30, 45);
+    T(-(ox + 4), -short, pzu - 19.5) Rz(-90) Rx(-90) corn(20, 2, 30, 45);
+
     pulleys = [[motorXY_x, motorXY_y, pzu, Tm, [180, 0]],  // motor L
-               [ix, -short, pzu, Ti, [0, -90]],            // corn BL
+               [ox, -short, pzu, Ti, [0, -90]],            // corn BL
                [-ix, -short, pz, Ti, [-90, 180]],          // corn BR inner
                [-ix, back_car_p_y, pz, Ti, [180, 90]],     // car
                [ix, back_car_p_y, pz, Ti, [90, 0]],        // car
                [ix, -short, pz, Ti, [0, -90]],             // corn BL inner
-               [-ix, -short, pzu, Ti, [-90, 180]],         // corn BR
+               [-ox, -short, pzu, Ti, [-90, 180]],         // corn BR
                [-motorXY_x, motorXY_y, pzu, Ti, [180, 0]], // motor R
                [-ix, front_car_p_y, pzu, Pi, [180, -90]],  // car
                [ix, front_car_p_y, pzu, Pi, [-90, 0]],     // car
@@ -41,5 +45,5 @@ belts_asm()
 
     draw_belts(pulleys);
 }
-
-if (!hide_belts)    belts_asm();
+if (!hide_belts)
+    belts_asm();

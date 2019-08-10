@@ -4,10 +4,10 @@ module corn(l = 10, t = 2, s1 = 20, s2)
     echo("BOM: auluminum corn ", s1, "x", so, "length=", l);
     ALUMINUM()
     {
-        translate([ -l / 2, 0, 0 ]) difference()
+        D()
         {
-            cube([ l, s1, so ]);
-            translate([ -0.05, t, t ]) cube(l + 0.1, s1 + 0.1, so + 1);
+            Cu(l, s1, so);
+            T(0, t, t) Cu(l + 1, s1 + 1, so + 1);
         }
     }
 }
@@ -151,7 +151,7 @@ module bolt(type, l = 10, nut, nuts)
     }
 }
 
-module cutZ(s = 200, dir = 1, rz = 0)
+module cutZ(s = 500, dir = 1, rz = 0)
 {
     D()
     {

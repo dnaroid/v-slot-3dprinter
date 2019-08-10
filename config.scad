@@ -3,7 +3,7 @@
 // hide_hotend = 1;
 // hide_bed = 1;
 
-car_y = -00;
+car_y = -100;
 car_x = -000;
 bed_z = -200; // 0..-200
 
@@ -39,7 +39,7 @@ motorXY_z = -8;
 motorZ_type = NEMA17;
 motorZ_x = 0;
 motorZ_y = motorXY_y;
-motorZ_z = -profileV_l -15;
+motorZ_z = -profileV_l - 15;
 
 screw_l = 250;
 screw_xo = profile_l / 2 - 30;
