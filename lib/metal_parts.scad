@@ -160,4 +160,9 @@ module cutZ(s = 500, dir = 1, rz = 0)
     }
 }
 
-
+module
+optical_endstop()
+{
+    echo("BOM: optical endstop");
+    import_stl("models/optical_endstop.stl", convexity = 5);
+}

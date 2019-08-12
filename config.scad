@@ -13,11 +13,12 @@ profile_t = 20;
 
 railX_type = MGN9H; // x5
 railX_l = 250;
+railX_yo = 0;
 railX_support_t = 3;
 railY_type = MGN9H;
 railY_l = 250;
 railX_car_w = railX_type[9][2];
-railY_yo = 20;
+railY_yo = 25;
 railY_car_h = railY_type[9][3];
 railY_car_l = railY_type[9][0];
 railY_car_w = railY_type[9][2];
@@ -33,7 +34,7 @@ bed_yo = 0;
 bed_zo = -60;
 
 motorXY_type = NEMA17;
-motorXY_x = (profile_l / 2) - 5;
+motorXY_x = (profile_l / 2) - 7;
 motorXY_y = (profile_l / 2) + profile_t + 10;
 motorXY_z = -8;
 motorZ_type = NEMA17;

@@ -19,9 +19,11 @@ rails_asm()
         rail(railY_type, railY_l, car_y - railY_placement_yo);
 
     // X
-    T(0, car_y + railY_yo, railX_z)
+    T(0, car_y + railY_yo + railX_yo, railX_z)
     Rx(180) rail(railX_type, railX_l, car_x);
-    T(0, car_y + railY_yo, railX_z + 1) ALUMINUM() D()
+    T(0, car_y + railY_yo, railX_z + 1)
+    ALUMINUM() // Cu(pl + pt * 2, 40, 2);
+    D()
     {
         Cu(pl + pt * 2, 60, 2);
         Ty(-33) Cu(railX_l - 10, 48, 5);
@@ -45,6 +47,7 @@ rails_asm()
 }
 
 rails_asm();
+
 
 
 
