@@ -5,7 +5,7 @@
 
 car_y = -100;
 car_x = -000;
-bed_z = -200; // 0..-200
+bed_z = -00; // 0..-200
 
 profile_l = 300;  // x9
 profileV_l = 300; // x6  = x15
@@ -24,6 +24,7 @@ railY_car_l = railY_type[9][0];
 railY_car_w = railY_type[9][2];
 railY_w = railY_type[1];
 railZ_type = MGN9H;
+railZ_car_h = railZ_type[9][3];
 railZ_l = 250;
 railZ_zo = 35;
 
