@@ -27,8 +27,9 @@ railZ_type = MGN9H;
 railZ_car_h = railZ_type[9][3];
 railZ_l = 250;
 railZ_zo = 35;
+railZ_xo = 50;
 
-hotEnd_type = E3D_clone; // JHeadMk5, JHeadMk4, E3Dv5, E3Dv6, E3D_clone
+hotEnd_type = E3Dv6; // JHeadMk5, JHeadMk4, E3Dv5, E3Dv6, E3D_clone
 
 bed_s = 220;
 bed_yo = 0;

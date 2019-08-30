@@ -22,9 +22,9 @@ caret_asm()
         {
             Rz(rz) e3d_hot_end_assembly(hotEnd_type, 1.75, true);
 
-            T(-18, 0, -32) Rx(90) Ry(-90) blower_4010();
-            T(18, 0, -32) Rx(90) Ry(90) blower_4010();
-            T(0, 16, -26) Rx(90) fan_3010();
+            // T(-18, 0, -32) Rx(90) Ry(-90) blower_4010();
+            // T(18, 0, -32) Rx(90) Ry(90) blower_4010();
+            // T(0, 16, -26) Rx(90) fan_3010();
 
             for (x = [ -14, 14 ])
                 T(x, 5, 10) bolt(M3_cap_screw, 20, nuts = [ 10, 19 ]);
@@ -32,7 +32,7 @@ caret_asm()
             // duct
             cr = 5;
             // cutZ(dir = -1, rz = 0)
-            Tz(-31) D()
+            *Tz(-31) D()
             {
                 CuR(60, 48, 54, r = cr);
                 T(0, 8, 26) hull()
@@ -52,4 +52,51 @@ caret_asm()
     }
 }
 
+module
+duct()
+{
+    D()
+    {
+        hull()
+        {
+            Cy(12, 40);
+            Rx(15) Tz(16) Ty(-10) Sy(0.5) Cy(15, 50);
+        }
+        Cy(11, 100);
+        Ty(25) Cu(40, 40, 100);
+        T(0, 10, 20) Cu(40, 40, 40);
+        T(0, 4, 25) Rx(15) Cu(40, 40, 40);
+    }
+}
+
+*T()
+{
+    *Tz(20) D()
+    {
+        e3d_hot_end_assembly(hotEnd_type, 1.75, true);
+        Cy(15, 40);
+    }
+
+    s = 0.9;
+
+    // cutZ(s = 200, rz = -90) 
+    D()
+    {
+        duct();
+        T(0, -3.2, 2) S(0.95, 0.80, 0.92) Rx(2)duct();
+    }
+
+    *T(0, -11, 25) Rx(90 + 15) fan(fan30x10);
+}
 caret_asm();
+
+
+
+
+
+
+
+
+
+
+
