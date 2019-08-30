@@ -41,7 +41,7 @@ motorXY_y = (profile_l / 2) + profile_t + 10;
 motorXY_z = -8;
 motorZ_type = NEMA17;
 motorZ_x = 0;
-motorZ_y = motorXY_y;
+motorZ_y = -profile_l/2+60;
 motorZ_z = -profileV_l - 15;
 
 screw_l = 250;

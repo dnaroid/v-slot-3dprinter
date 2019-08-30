@@ -33,22 +33,8 @@ rails_asm()
 
     //  Z
      for (x = [ -railZ_xo, railZ_xo ])
-        T(x, -short+hpt, -railZ_l / 2 - railZ_zo) R(0,90,90) rail(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
-
-    // T(-hpl + bed_corn_h / 2 + railZ_car_h, bed_yo, bed_z + bed_zo - 10)
-    // Rz(-90) corn(bed_s + 10, 2, bed_corn_h);
-
-    // T(0, -bed_s / 2, bed_z + bed_zo - 14)
-    // corn(hpl * 2, 2, bed_corn_h);
-
-    // T(0, +bed_s / 2, bed_z + bed_zo - 14)
-    // Rz(180) corn(hpl * 2, 2, bed_corn_h);
-
-    // right Z
-    // T(hpl, bed_yo, -railZ_l / 2 - railZ_zo)
-    // R(0, 90, 180) rail(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
-    // T(hpl - bed_corn_h / 2 - railZ_car_h, bed_yo, bed_z + bed_zo - 10)
-    // Rz(90) corn(bed_s + 10, 2, bed_corn_h);
+        T(x, -short+hpt, -railZ_l / 2 - railZ_zo) R(0,90,90)
+         rail(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
 
     T(0, bed_yo, bed_z + bed_zo - 26)
     Cu((hpl - railY_car_h) * 2 - 4, bed_s + 10, 2);

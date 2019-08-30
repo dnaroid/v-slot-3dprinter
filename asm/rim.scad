@@ -51,7 +51,7 @@ rim_asm()
 
     // front
     R(90, 0, 90)
-    T(short, cz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    T(short, bz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // back
     R(90, 0, 90)

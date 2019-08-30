@@ -38,16 +38,9 @@ bed_asm()
     // isolator
     T(0, bed_yo, iso_z) C("white") Cu(210, 210, iso_t);
 
-    T(screw_xo, bed_yo, screw_z)
+    T(0, motorZ_y, screw_z)
     t8(screw_l, t8_pos, 180);
-    T(screw_xo, bed_yo, screw_z - screw_l + 20)
-    kfl08();
-
-    T(-screw_xo, bed_yo, screw_z)
-    t8(screw_l, t8_pos, 180);
-    T(-screw_xo, bed_yo, screw_z - screw_l + 20)
-    kfl08();
-
+ 
     pz = -profileV_l - 26;
     idler_o = 10;
     idler_y = bed_yo;

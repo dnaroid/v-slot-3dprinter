@@ -18,7 +18,7 @@ motors_asm()
     }
 
     // Z
-    T(motorZ_x, motorZ_y, motorZ_z) R(180, 0, 0)
+    T(motorZ_x, motorZ_y, motorZ_z) R(0, 0, 180)
     {
         NEMA(motorZ_type);
         nema17_damper();
