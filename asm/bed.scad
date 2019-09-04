@@ -41,18 +41,18 @@ bed_asm()
     T(0, motorZ_y, screw_z)
     t8(screw_l, t8_pos, 180);
  
-    pz = -profileV_l - 26;
-    idler_o = 10;
-    idler_y = bed_yo;
+    // pz = -profileV_l - 26;
+    // idler_o = 10;
+    // idler_y = bed_yo;
 
-    pulleys = [[screw_xo, bed_yo, pz, GT2x20_toothed_idler, [0, -90]],
-               [-screw_xo, bed_yo, pz, GT2x20_toothed_idler, [-90, 90]],
-               [-idler_o, idler_y, pz, GT2x20_plain_idler, [-90, -0]],
-               [motorZ_x, motorZ_y, pz, GT2x20um_pulley, [180, 0]],
-               [idler_o, idler_y, pz, GT2x20_plain_idler, [180, -90]],
-               [screw_xo, bed_yo, pz, undef, [90, -90]]];
+    // pulleys = [[screw_xo, bed_yo, pz, GT2x20_toothed_idler, [0, -90]],
+    //            [-screw_xo, bed_yo, pz, GT2x20_toothed_idler, [-90, 90]],
+    //            [-idler_o, idler_y, pz, GT2x20_plain_idler, [-90, -0]],
+    //            [motorZ_x, motorZ_y, pz, GT2x20um_pulley, [180, 0]],
+    //            [idler_o, idler_y, pz, GT2x20_plain_idler, [180, -90]],
+    //            [screw_xo, bed_yo, pz, undef, [90, -90]]];
 
-    draw_belts(pulleys);
+    // draw_belts(pulleys);
 }
 
 if (!hide_bed)
