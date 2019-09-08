@@ -22,7 +22,7 @@ rails_asm()
     T(0, car_y + railY_yo + railX_yo, railX_z)
     Rx(180) rail(railX_type, railX_l, car_x);
     T(0, car_y + railY_yo, railX_z + 1)
-    *ALUMINUM() // Cu(pl + pt * 2, 40, 2);
+    ALUMINUM() // Cu(pl + pt * 2, 40, 2);
         D()
     {
         Cu(pl + pt * 2, 60, 2);
