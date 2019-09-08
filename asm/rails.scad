@@ -38,6 +38,8 @@ rails_asm()
 
     T(0, bed_yo, bed_z + bed_zo - 26)
     Cu((hpl - railY_car_h) * 2 - 4, bed_s + 10, 2);
+
+    ALUMINUM() T(0,-short+hpt+railZ_car_h-2,-railZ_l / 2 - caretZ_o - bed_z)Cu(bed_s,4,50);
 }
 
 rails_asm();

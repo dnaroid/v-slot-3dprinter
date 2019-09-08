@@ -24,7 +24,7 @@ belts_asm()
     ix = motorXY_x - pd + 1;
     ox = motorXY_x;
 
-    iy = short - 20;
+    iy = short - 15;
     oy = short;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 7;
