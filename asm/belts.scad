@@ -1,7 +1,7 @@
 module
 belts_asm()
 {
-    pz = 6;
+    pz = 5;
     pzu = pz; // pz + 11;
 
     screwR = 1.5;
@@ -28,7 +28,7 @@ belts_asm()
     oy = short;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 7;
-    back_car_p_y = car_yo - railX_car_w / 2 - 7;
+    back_car_p_y = car_yo - railX_car_w / 2 -7;
 
     T(ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);
     T(-ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);

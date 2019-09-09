@@ -164,6 +164,6 @@ module
 optical_endstop()
 {
     echo("BOM: optical endstop");
-    import_stl("models/optical_endstop.stl", convexity = 5);
+    C("red")import_stl("models/optical_endstop.stl", convexity = 5);
 }
 

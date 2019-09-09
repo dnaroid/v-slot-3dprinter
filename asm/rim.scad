@@ -31,7 +31,7 @@ rim_asm()
 
     // Z rails holders
     for (x = [ -railZ_xo, railZ_xo ])
-        T(x, -short, -vl - pt) extrusion_profile_20x20_v_slot(pt, vl);
+        T(x, short, -vl - pt) extrusion_profile_20x20_v_slot(pt, vl);
 
     // front right
     T(-long, short, -vl - pt)

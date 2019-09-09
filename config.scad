@@ -3,8 +3,8 @@
 // hide_hotend = 1;
 // hide_bed = 1;
 
-car_y = -100;
-car_x = -000;
+car_y = 100;
+car_x = -100;
 bed_z = -00; // 0..-200
 
 profile_l = 300;  // x9
@@ -18,6 +18,7 @@ railX_support_t = 3;
 railY_type = MGN9H;
 railY_l = 250;
 railX_car_w = railX_type[9][2];
+railX_car_h = railX_type[9][3];
 railY_yo = 15;
 railY_car_h = railY_type[9][3];
 railY_car_l = railY_type[9][0];
@@ -26,14 +27,14 @@ railY_w = railY_type[1];
 railZ_type = MGN9H;
 railZ_car_h = railZ_type[9][3];
 railZ_l = 250;
-railZ_zo = 35;
+railZ_zo = 20;
 railZ_xo = 50;
 
 hotEnd_type = E3Dv6; // JHeadMk5, JHeadMk4, E3Dv5, E3Dv6, E3D_clone
 
 bed_s = 220;
-bed_yo = 0;
-bed_zo = -60;
+bed_yo = -10;
+bed_zo = -12;
 
 motorXY_type = NEMA17;
 motorXY_x = (profile_l / 2) - 7;
@@ -41,7 +42,7 @@ motorXY_y = (profile_l / 2) + profile_t + 10;
 motorXY_z = -8;
 motorZ_type = NEMA17S;
 motorZ_x = 0;
-motorZ_y = -profile_l/2+42;
+motorZ_y = profile_l/2-42;
 motorZ_z = -profileV_l - 5;
 
 screw_l = 300;
