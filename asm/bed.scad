@@ -13,15 +13,16 @@ bed_asm()
     heater_t = 1.2;
     plate_t = 2;
     iso_t = 10;
-    t8_pos = bed_z - 17;
+    t8_pos = bed_z - 20;
 
     glass_z = z;
     plate_z = glass_z - glass_t / 2 - plate_t / 2;
     heater_z = plate_z - glass_t / 2 - heater_t / 2;
     iso_z = heater_z - heater_t / 2 - iso_t / 2;
+    table_z = glass_z - 45;
 
     // glass
-    // % T(0, bed_yo, glass_z) #Cu(glass_s, glass_s, glass_t);
+    T(0, bed_yo, glass_z) #Cu(glass_s, glass_s, glass_t);
 
     // plate
     T(0, bed_yo, plate_z)
@@ -38,23 +39,20 @@ bed_asm()
     // isolator
     T(0, bed_yo, iso_z) C("white") Cu(210, 210, iso_t);
 
-    T(0, motorZ_y, screw_z)
+    T(motorZ_x, motorZ_y, screw_z)
     t8(screw_l, t8_pos, 180);
- 
-    // pz = -profileV_l - 26;
-    // idler_o = 10;
-    // idler_y = bed_yo;
 
-    // pulleys = [[screw_xo, bed_yo, pz, GT2x20_toothed_idler, [0, -90]],
-    //            [-screw_xo, bed_yo, pz, GT2x20_toothed_idler, [-90, 90]],
-    //            [-idler_o, idler_y, pz, GT2x20_plain_idler, [-90, -0]],
-    //            [motorZ_x, motorZ_y, pz, GT2x20um_pulley, [180, 0]],
-    //            [idler_o, idler_y, pz, GT2x20_plain_idler, [180, -90]],
-    //            [screw_xo, bed_yo, pz, undef, [90, -90]]];
-
-    // draw_belts(pulleys);
+    Tz(table_z)
+    {
+        Ty(97) Rx(180) corn(230, 1.8, 45);
+        T(-90, -8, -2) R(-90, 0, 90) corn(250, 1.8, 45);
+        T(90, -8, -2) R(180, 0, 90) corn(250, 1.8, 45);
+        Ty(-112) Rx(-90) corn(190, 1.8, 45);
+    }
 }
-
 if (!hide_bed)
     bed_asm();
+
+
+
 

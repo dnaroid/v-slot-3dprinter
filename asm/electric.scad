@@ -1,7 +1,7 @@
 module
 electric_asm()
 {
-    T(-short+28, short + 15, 7)
+    T(-short + 28, short + 15, 7)
     R(0, -90, 0)
     optical_endstop();
 

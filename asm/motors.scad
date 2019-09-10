@@ -18,11 +18,10 @@ motors_asm()
     }
 
     // Z
-    T(motorZ_x, motorZ_y, motorZ_z) R(0, 0, 180)
+    T(motorZ_x, motorZ_y, motorZ_z) Rz(180)
     {
         NEMA(motorZ_type);
         nema17_damper();
-        Tz(6) Rz(180) nema17_L_bracket();
     }
 }
 

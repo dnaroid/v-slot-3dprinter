@@ -6,8 +6,8 @@ belts_asm()
 
     screwR = 1.5;
 
-    Ti = GT2x20_toothed_idler;
-    Pi = GT2x20_plain_idler;
+    Ti = GT2_idler;
+    Pi = GT2_idler;
     Tm = GT2x20um_pulley;
 
     pd = Tm[3];
@@ -24,11 +24,11 @@ belts_asm()
     ix = motorXY_x - pd + 1;
     ox = motorXY_x;
 
-    iy = short - 15;
+    iy = short - 18;
     oy = short;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 7;
-    back_car_p_y = car_yo - railX_car_w / 2 -7;
+    back_car_p_y = car_yo - railX_car_w / 2 - 7;
 
     T(ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);
     T(-ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);

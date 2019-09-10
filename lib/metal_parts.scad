@@ -20,7 +20,7 @@ module t8(l, pos, rot = 0)
     Tz(pos) Rx(rot) t8_nut();
 }
 
-module draw_belt(from, to, a, pr = 6)
+module draw_belt(from, to, a, pr = 7)
 {
     echo("BOM: GT2 belt part",
          sqrt(pow(from[0] - to[0], 2) + pow(from[1] - to[1], 2)));
@@ -164,6 +164,6 @@ module
 optical_endstop()
 {
     echo("BOM: optical endstop");
-    C("red")import_stl("models/optical_endstop.stl", convexity = 5);
+    C(0.2,0.2,0.2) import_stl("models/optical_endstop.stl", convexity = 5);
 }
 
