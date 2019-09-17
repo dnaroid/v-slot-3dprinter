@@ -164,6 +164,14 @@ module
 optical_endstop()
 {
     echo("BOM: optical endstop");
-    C(0.2,0.2,0.2) import_stl("models/optical_endstop.stl", convexity = 5);
+    C(0.2, 0.2, 0.2) import_stl("models/optical_endstop.stl", convexity = 5);
 }
 
+module plate(sx, sy, h, r = 1)
+{
+    minkowski()
+    {
+        Cu(sx - r * 2, sy - r * 2, h - r / 2);
+        Cy(r);
+    }
+}
