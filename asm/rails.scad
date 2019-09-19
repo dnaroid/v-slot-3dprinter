@@ -23,12 +23,38 @@ rails_asm()
     Rx(180) rail(railX_type, railX_l, car_x);
 
     T(0, car_y + railY_yo + railX_yo + 0, railX_z + railX_car_h - 8)
-    ALUMINUM() D()
+D()
     {
-        Cu(profile_l + profile_t * 2, 50, 4);
-        Ty(-15) Cu(profile_l - 60, 20.5, 10);
+        // Cu(profile_l + profile_t * 2, 45, 4);
+        Tz(3) Rx(90) corn(profile_l + profile_t * 2, 1.8, 10, 45);
+        Ty(-15) Cu(profile_l - 60, 21, 30);
     }
 
+    // conductor
+    T(140, car_y + railY_yo + railX_yo + 0, railX_z + railX_car_h - 8)
+*D()
+    {
+        U()
+        {
+            T(0, -3.5, 1) Cu(60, 48, 3);
+            T(0, -25, -1) Cu(60, 5, 3);
+        }
+        T(-10, 17) Cy(1, 50);
+        T(-10, -17) Cy(1, 50);
+
+        T(12.5, -5) Cy(1, 50);
+        T(12.5, 5) Cy(1, 50);
+        T(12.5 + 15, -5) Cy(1, 50);
+        T(12.5 + 15, 5) Cy(1, 50);
+
+        hull(){
+            T(-15, 0) Cy(1, 50);
+            T(-27, 0) Cy(1, 50);
+        }
+    }
+    //     T(motorXY_x, car_y + railY_yo + railX_yo + 0, railX_z + railX_car_h -
+    //     20)
+    // #Cu(13.5, 100, 100);
     // belts clip
     T(car_x, car_y + railY_yo + railX_yo + 3, railX_z + railX_car_h + 1)
     corn(40, 2, 30, 45);

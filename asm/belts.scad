@@ -21,7 +21,7 @@ belts_asm()
 
     car_yo = car_y + railY_yo;
 
-    ix = motorXY_x - pd + 1;
+    ix = motorXY_x - pd -1;
     ox = motorXY_x;
 
     iy = short - 18;

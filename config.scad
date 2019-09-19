@@ -4,8 +4,8 @@
 // hide_bed = 1;
 
 car_y = -100;
-car_x = -00;
-bed_z = -200; // 0..-200
+car_x = -100;
+bed_z = -00; // 0..-200
 
 profile_l = 300;  // x9
 profileV_l = 300; // x6  = x15
