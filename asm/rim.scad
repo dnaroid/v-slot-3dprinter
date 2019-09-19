@@ -30,8 +30,17 @@ rim_asm()
     extrusion_profile_20x20_v_slot(pt, vl);
 
     // Z rails holders
-    for (x = [ -railZ_xo, railZ_xo ])
-        T(x, short, -vl - pt) extrusion_profile_20x20_v_slot(pt, vl);
+    // for (x = [ -railZ_xo, railZ_xo ])
+    //     T(x, short, -vl - pt) extrusion_profile_20x20_v_slot(pt, vl);
+
+     // center right
+    T(-long, bed_yo, -vl - pt)
+    extrusion_profile_20x20_v_slot(pt, vl);
+
+    // center left
+    T(long, bed_yo, -vl - pt)
+    extrusion_profile_20x20_v_slot(pt, vl);
+   
 
     // front right
     T(-long, short, -vl - pt)
@@ -58,8 +67,8 @@ rim_asm()
     T(-short, bz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     // center
-    // R(90, 0, 90)
-    // T(bed_yo, cz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    R(90, 0, 90)
+    T(bed_yo, cz, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 }
 
 rim_asm();
