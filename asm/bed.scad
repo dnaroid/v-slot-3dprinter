@@ -39,8 +39,8 @@ bed_asm()
     // isolator
     T(0, bed_yo, iso_z) C("white") Cu(210, 210, iso_t);
 
-    T(motorZ_x, motorZ_y, screw_z)
-    t8(screw_l, t8_pos, 180);
+    T(125, bed_yo, screw_z) t8(screw_l, t8_pos, 180);
+    T(-125, bed_yo, screw_z) t8(screw_l, t8_pos, 180);
 
     // Tz(table_z)
     // {

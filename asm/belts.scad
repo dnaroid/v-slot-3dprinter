@@ -21,7 +21,7 @@ belts_asm()
 
     car_yo = car_y + railY_yo;
 
-    ix = motorXY_x - pd -1;
+    ix = motorXY_x - pd - 1;
     ox = motorXY_x;
 
     iy = short - 18;
@@ -46,7 +46,7 @@ belts_asm()
                [motorXY_x, motorXY_y, pzu, undef, [180, 0]],
     ];
 
-    draw_belts(pulleys);
+    Tz(5) draw_belts(pulleys);
 }
 if (!hide_belts)
     belts_asm();
