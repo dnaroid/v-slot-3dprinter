@@ -5,6 +5,7 @@ use <lib/materials.scad>
 use <lib/shortcuts.scad>
 
 include <config.scad>
+include <lib/elements.scad>
 include <lib/metal_parts.scad>
 use <lib/v_slot.scad>
 

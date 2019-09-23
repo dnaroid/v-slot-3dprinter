@@ -27,41 +27,33 @@ rails_asm()
         D()
         {
             Cu(profile_l + profile_t * 2, 50, 3);
-            Ty(-15) Cu(profile_l - 60, 21, 30);
+            Ty(-20) Cu(profile_l - 60, 21, 30);
         }
 
         // conductor
-        *T(140, car_y + railY_yo + railX_yo + 0, railX_z + railX_car_h - 8) D()
-        {
-            U()
-            {
-                T(8, -2.5, 2.5) plate(45, 45, 2, r = 2);
-                // T(0, -25, -1) Cu(60, 5, 3);
-            }
-            T(-10, 17) Cy(1, 50);
-            T(-10, -17) Cy(1, 50);
+        // *T(140, car_y + railY_yo + railX_yo + 0, railX_z + railX_car_h - 8)
+        // D()
+        // {
+        //     U()
+        //     {
+        //         T(8, -2.5, 2.5) plate(45, 45, 2, r = 2);
+        //         // T(0, -25, -1) Cu(60, 5, 3);
+        //     }
+        //     T(-10, 17) Cy(1, 50);
+        //     T(-10, -17) Cy(1, 50);
 
-            T(12.5, -8) Cy(1, 50);
-            T(12.5, 8) Cy(1, 50);
-            T(12.5 + 15, -8) Cy(1, 50);
-            T(12.5 + 15, 8) Cy(1, 50);
+        //     T(12.5, -8) Cy(1, 50);
+        //     T(12.5, 8) Cy(1, 50);
+        //     T(12.5 + 15, -8) Cy(1, 50);
+        //     T(12.5 + 15, 8) Cy(1, 50);
 
-            T(-10, 0) Cy(1, 50);
-        }
-        //     T(motorXY_x, car_y + railY_yo + railX_yo + 0, railX_z +
-        //     railX_car_h - 20)
-        // #Cu(13.5, 100, 100);
-        // belts clip
+        //     T(-10, 0) Cy(1, 50);
+        // }
+
         T(car_x, car_y + railY_yo + railX_yo + 3, railX_z + railX_car_h + 1)
         corn(40, 2, 30, 45);
 
         bed_corn_h = 45;
-
-        //  Z
-        // for (x = [ -railZ_xo, railZ_xo ])
-        //     T(x, short - hpt, -railZ_l / 2 - railZ_zo)
-        // R(0, 90, -90)
-        // rail(railZ_type, railZ_l, -railZ_l / 2 - caretZ_o - bed_z);
 
         // left Z
         T(-hpl, bed_yo, -railZ_l / 2 - railZ_zo)
@@ -79,12 +71,11 @@ rails_asm()
           bed_z + bed_zo - bed_corn_h)
         R(180, 0, -90) corn(bed_s + 10, 2, bed_corn_h);
 
-        T(0, -bed_s / 2 + 8, bed_z + bed_zo - bed_corn_h - 2)
-        Rx(-90) corn(hpl * 2 - 22, 2, bed_corn_h);
-
-        T(0, bed_s / 2 - 28, bed_z + bed_zo - bed_corn_h - 2)
-        Rx(180) corn(hpl * 2 - 22, 2, bed_corn_h);
+        T(0, bed_yo, bed_z + bed_zo - bed_corn_h - 2)
+        {
+            Ty(bed_s / 2 - 35) Rx(-90) corn(hpl * 2 - 22, 2, bed_corn_h);
+            Ty(-bed_s / 2 + 35) Rx(180) corn(hpl * 2 - 22, 2, bed_corn_h);
+        }
     }
 }
-
 rails_asm();

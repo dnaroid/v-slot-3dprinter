@@ -13,7 +13,7 @@ bed_asm()
     heater_t = 1.2;
     plate_t = 2;
     iso_t = 10;
-    t8_pos = bed_z - 20;
+    t8_pos = bed_z - 7;
 
     glass_z = z;
     plate_z = glass_z - glass_t / 2 - plate_t / 2;
@@ -22,7 +22,7 @@ bed_asm()
     table_z = glass_z - 45;
 
     // glass
-    T(0, bed_yo, glass_z) #Cu(glass_s, glass_s, glass_t);
+    T(0, bed_yo, glass_z + 0.01) % Cu(glass_s, glass_s, glass_t);
 
     // plate
     T(0, bed_yo, plate_z)
@@ -41,17 +41,10 @@ bed_asm()
 
     T(125, bed_yo, screw_z) t8(screw_l, t8_pos, 180);
     T(-125, bed_yo, screw_z) t8(screw_l, t8_pos, 180);
-
-    // Tz(table_z)
-    // {
-    //     Ty(97) Rx(180) corn(230, 1.8, 45);
-    //     T(-90, -8, -2) R(-90, 0, 90) corn(250, 1.8, 45);
-    //     T(90, -8, -2) R(180, 0, 90) corn(250, 1.8, 45);
-    //     Ty(-112) Rx(-90) corn(190, 1.8, 45);
-    // }
 }
 if (!hide_bed)
     bed_asm();
+
 
 
 

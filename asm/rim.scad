@@ -7,6 +7,15 @@ rim_asm()
 
     //// top
 
+    for (x = [ -long, long ]) {
+        T(x, railY_yo, 10 / 2)
+        ALUMINUM() D()
+        {
+            Cu(20, railY_l, 10);
+            Cu(20 - 1.5 * 2, railY_l + 1, 10 - 1.5 * 2);
+        }
+    }
+
     // left
     Rx(90) T(long, -hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
@@ -18,6 +27,8 @@ rim_asm()
 
     // back
     R(90, 0, 90) T(-short, -hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
+    R(90, 0, 90)
+    T(-short + profile_t, -hpt, -hpl) extrusion_profile_20x20_v_slot(pt, pl);
 
     //// mid
 
@@ -28,10 +39,6 @@ rim_asm()
     // back left
     T(long, -short, -vl - pt)
     extrusion_profile_20x20_v_slot(pt, vl);
-
-    // Z rails holders
-    // for (x = [ -railZ_xo, railZ_xo ])
-    //     T(x, short, -vl - pt) extrusion_profile_20x20_v_slot(pt, vl);
 
     // center right
     T(-long, bed_yo, -vl - pt)
@@ -73,7 +80,6 @@ rim_asm()
 }
 
 rim_asm();
-
 
 
 

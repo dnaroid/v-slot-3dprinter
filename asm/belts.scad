@@ -1,6 +1,7 @@
 module
 belts_asm()
 {
+    belts_zo = 9;
     pz = 5;
     pzu = pz; // pz + 11;
 
@@ -46,7 +47,7 @@ belts_asm()
                [motorXY_x, motorXY_y, pzu, undef, [180, 0]],
     ];
 
-    Tz(5) draw_belts(pulleys);
+    Tz(belts_zo) draw_belts(pulleys);
 }
 if (!hide_belts)
     belts_asm();
