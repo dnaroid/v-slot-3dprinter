@@ -25,14 +25,11 @@ belts_asm()
     ix = motorXY_x - pd - 1;
     ox = motorXY_x;
 
-    iy = short - 18;
+    iy = short - profile_t;
     oy = short;
 
     front_car_p_y = car_yo + railX_car_w / 2 + 7;
     back_car_p_y = car_yo - railX_car_w / 2 - 7;
-
-    T(ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);
-    T(-ix, -iy, pzu - 16) Rx(-90) Rz(0) corn(20, 2, 20);
 
     pulleys = [[motorXY_x, motorXY_y, pzu, Tm, [180, 0]],  // motor L
                [ox, -oy, pzu, Ti, [0, -90]],               // corn BL
