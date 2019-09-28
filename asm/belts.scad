@@ -1,7 +1,7 @@
 module
 belts_asm()
 {
-    belts_zo = 9;
+    belts_zo = 8;
     pz = 5;
     pzu = pz; // pz + 11;
 
