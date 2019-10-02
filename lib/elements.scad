@@ -43,6 +43,14 @@ titan_extruder()
 }
 
 module
+blower_5015()
+{
+    echo("BOM: blower 4010");
+    C(0.3, 0.3, 0.3)
+    import_stl("models/5015_blower_fan.stl", convexity = 5);
+}
+
+module
 blower_4010()
 {
     echo("BOM: blower 4010");
@@ -57,14 +65,20 @@ fan_3010()
     fan(fan30x10);
 }
 
-module cutZ(s = 500, dir = 1, rz = 0)
-{
-    D()
-    {
+module cutXZ(s = 200, y=0, rz=0, rx=0, ry=0) {
+    D() {
         children();
-        Rz(rz) Ty(dir * s / 2) Cu(s);
+        Ty(sign(y+.001)*s/2+y) Rx(rx)Ry(ry)Rz(rz) Cu(s);
     }
 }
+
+module cutYZ(s = 200, x=0, rz=0, rx=0, ry=0) {
+    D() {
+        children();
+        Tx(sign(x+.001)*s/2+x) Rx(rx)Ry(ry)Rz(rz) Cu(s);
+    }
+}
+
 
 module
 optical_endstop()
