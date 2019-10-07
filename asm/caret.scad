@@ -43,10 +43,10 @@ caret_asm()
                         T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7+wt,wo,6+wt,r=wr); 
                     }
 
-                    T(0,-8.5,-2) Rx(90) plate(20,12,5,2); // self holder
-                    T(0,-10,-2) hull() { CuR(4,2,12,r=1); T(0,-12,5)CuR(4,2,2,r=1);}
+                    T(0,-8.5+-1,-2) CuR(35,7,14,r=2);// self holder
+                    T(0,-10,-3) hull() { CuR(4,2,12,r=1); T(0,-11,6)CuR(4,2,2,r=1);}
 
-                    T(car_x - 18, car_y + railY_yo - 30.5, 0) Ry(90) Cy(4,8.5); //optical_endstop
+                    T(car_x - 20, car_y + railY_yo - 28, 0) Ry(90) Cy(4,6); //optical_endstop
 
                      // fan holders
                     D() {
@@ -63,8 +63,7 @@ caret_asm()
  
                 }
 
-                T(car_x - 18-4, car_y + railY_yo - 30.5, 0) Ry(90) Cy(3.5/2,12.1); //optical_endstop
-
+                T(car_x - 20, car_y + railY_yo - 28, 0) Ry(90) Cy(3.4/2,7); 
     
             
                 w=15;
@@ -80,8 +79,8 @@ caret_asm()
                 
                     for(dy=[legs_o,-legs_o]) T(-sign(dy)*10,dy*1,-40) CuR(15,w,4,r=2); 
 
-                    T(0, -7.4, -3) Rx(90) forX(14,2) Cy(6.5/2,3); //holders
-                    T(0, 0, -3) Rx(90) forX(14,2) Cy(2.5/2,25); //holders
+                    T(0, -7.4, -3) Rx(90) forX(14,2) hull()forY(2,2) Cy(6.5/2,3); //holders
+                    T(0, -10, -3) Rx(90) forX(14,2) hull()forY(2,2)Cy(3/2,10); //holders
                 }
 
             }
