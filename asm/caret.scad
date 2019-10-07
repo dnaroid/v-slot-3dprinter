@@ -18,14 +18,15 @@ caret_asm()
 
     if (!hide_hotend) {
         ax=14.7;
+        topZO=3;
         T(car_x + dx, car_y + dy + railY_yo, dz)
         {
             Rz(rz) mirror([1, 0, 0]) hotend_cr10();
             T(0, -24-explode, -14) Rx(-90+ax) fan_3010();
-            T(-10, -24, 7+explode) R(90,0,0) blower_5015();
+            T(-10, -24, 7+topZO+explode) R(90,0,0) blower_5015();
 
             !T()
-            Rx(90-ax) // for print
+            // Rx(90-ax) // for print
             // cutXZ(rx=ax, y=-20)
             // cutYZ(x=-20)
             D() {
@@ -35,14 +36,15 @@ caret_asm()
                     wo=15+wt*2;
                     wr=6;
 
-                    T(0,-16,8) CuR(18,14,8,r=1);  
-                    T(0,-16,3) CuR(44+wt,wo,6+wt,r=wr); 
+                    T(0,-16,8+topZO) CuR(18,14,8,r=1);  
+                    T(0,-16,3+topZO) CuR(44+wt,wo,6+wt,r=wr); 
                      for(dx=[37/2,-37/2]) hull(){
-                        T(dx,-16,3)CuR(7+wt,wo,6+wt,r=wr); 
+                        T(dx,-16,3+topZO)CuR(7+wt,wo,6+wt,r=wr); 
                         T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7+wt,wo,6+wt,r=wr); 
                     }
 
-                    T(0,-8.5,-3) Rx(90) plate(20,10,5,2); // self holder
+                    T(0,-8.5,-2) Rx(90) plate(20,12,5,2); // self holder
+                    T(0,-10,-2) hull() { CuR(4,2,12,r=1); T(0,-12,5)CuR(4,2,2,r=1);}
 
                     T(car_x - 18, car_y + railY_yo - 30.5, 0) Ry(90) Cy(4,8.5); //optical_endstop
 
@@ -69,10 +71,10 @@ caret_asm()
                 ri=4;
 
                 U(){  // - blower holes
-                    T(0,-16,10) CuR(17-3,13-3,20,r=1);  
-                    T(0,-16,3) CuR(44,w,6,r=ri); 
+                    T(0,-16,10+topZO) CuR(17-3,13-3,20,r=1);  
+                    T(0,-16,3+topZO) CuR(44,w,6,r=ri); 
                     for(dx=[37/2,-37/2])hull(){
-                        T(dx,-16,3)CuR(7,w,6,r=ri); 
+                        T(dx,-16,3+topZO)CuR(7,w,6,r=ri); 
                         T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7,w,6,r=ri); 
                     }
                 
