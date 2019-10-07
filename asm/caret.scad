@@ -25,7 +25,7 @@ caret_asm()
             T(-10, -24, 7+explode) R(90,0,0) blower_5015();
 
             !T()
-            // Rx(90-ax) // for print
+            Rx(90-ax) // for print
             // cutXZ(rx=ax, y=-20)
             // cutYZ(x=-20)
             D() {
@@ -87,7 +87,7 @@ caret_asm()
     }
 }
 
-!caret_asm();
+caret_asm();
 
 
 
