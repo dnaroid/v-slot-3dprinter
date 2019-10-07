@@ -14,7 +14,7 @@ caret_asm()
 
     T(car_x - 18-6, car_y + railY_yo - 10, 35)  R(90, 0, -90) optical_endstop();
 
-    explode = 150;
+    explode = 0*150;
 
     if (!hide_hotend) {
         ax=14.7;
@@ -25,7 +25,7 @@ caret_asm()
             T(-10, -24, 7+explode) R(90,0,0) blower_5015();
 
             !T()
-            Rx(90-ax) // for print
+            // Rx(90-ax) // for print
             // cutXZ(rx=ax, y=-20)
             // cutYZ(x=-20)
             D() {
@@ -47,17 +47,23 @@ caret_asm()
                     T(car_x - 18, car_y + railY_yo - 30.5, 0) Ry(90) Cy(4,8.5); //optical_endstop
 
                      // fan holders
-                    T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(4,6);
-                    T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(4,6);
-                    T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(4,6);
+                    D() {
+                        U(){
+                            T(-12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
+                            T(12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
+                            T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(4,6);
+                        }
+                        T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
+                        T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
+                        T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(3.2/2,20);
+                    
+                    }
+ 
                 }
 
                 T(car_x - 18-4, car_y + railY_yo - 30.5, 0) Ry(90) Cy(3.5/2,12.1); //optical_endstop
 
-                // fan holders
-                T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,6.1);
-                T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,6.1);
-                T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(3.2/2,6.1);
+    
             
                 w=15;
                 ri=4;
@@ -81,7 +87,7 @@ caret_asm()
     }
 }
 
-caret_asm();
+!caret_asm();
 
 
 
