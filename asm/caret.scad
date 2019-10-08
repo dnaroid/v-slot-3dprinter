@@ -1,3 +1,14 @@
+
+module leg() {
+  hulls() {
+    T(nozzle_xo,nozzle_yo,nozzle_z+nozzle_zo) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
+    T(nozzle_xo+3,nozzle_yo,nozzle_z+nozzle_zo+1) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
+    T(nozzle_xo+5,nozzle_yo-3,nozzle_z+nozzle_zo+10) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+    T(nozzle_xo+3,nozzle_yo-10,nozzle_z+nozzle_zo+50) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+    T(nozzle_xo+1,nozzle_yo-12,nozzle_z+nozzle_zo+55) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+  }
+}
+
 module
 caret_asm()
 {
@@ -17,79 +28,51 @@ caret_asm()
     explode = 0*150;
 
     if (!hide_hotend) {
-        ax=14.7;
-        topZO=3;
+        
         T(car_x + dx, car_y + dy + railY_yo, dz)
         {
             Rz(rz) mirror([1, 0, 0]) hotend_cr10();
-            T(0, -24-explode, -14) Rx(-90+ax) fan_3010();
-            T(-10, -24, 7+topZO+explode) R(90,0,0) blower_5015();
+            // T(0, -24-explode, -14) Rx(-90) Rz(0)fan_3010();
+            // T(-10, -24, 7+explode) R(90,0,0) blower_5015();
+            // T(0,-10,40)bl_touch();
+            C(0.7,0.1,0.1){
+                T(12,7,-34) R(30,50) Cy(6/3,10);  // wires
+                T(15,4,-7) Cy(6/3,50);  // wires
+            }
 
-            !T()
-            // Rx(90-ax) // for print
+            nozzle_z = -48;
+            nozzle_xo = 12;
+            nozzle_zo = 3;
+            nozzle_yo = 0*5;
+            outlet_w = 10;
+            outlet_h = 3;
+            outlet_r = 1.5;
+            channel_w = 12;
+            channel_t = 6;
+            channel_r = 2;
+            blower_z = 20;
+
+            T(-10, -24, blower_z+explode) R(90,0,0) blower_5015();
+
+            T()
+            // Rx(90) // for print
             // cutXZ(rx=ax, y=-20)
             // cutYZ(x=-20)
-            D() {
-                legs_o=5;
-                U(){ // blower walls
-                    wt=1.2;
-                    wo=15+wt*2;
-                    wr=6;
+                D() {
+                  U(){ 
+  
+                  }
 
-                    T(0,-16,8+topZO) CuR(18,14,8,r=1);  
-                    T(0,-16,3+topZO) CuR(44+wt,wo,6+wt,r=wr); 
-                     for(dx=[37/2,-37/2]) hull(){
-                        T(dx,-16,3+topZO)CuR(7+wt,wo,6+wt,r=wr); 
-                        T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7+wt,wo,6+wt,r=wr); 
-                    }
-
-                    T(0,-8.5+-1,-2) CuR(35,7,14,r=2);// self holder
-                    T(0,-10,-3) hull() { CuR(4,2,12,r=1); T(0,-11,6)CuR(4,2,2,r=1);}
-
-                    T(car_x - 20, car_y + railY_yo - 28, 0) Ry(90) Cy(4,6); //optical_endstop
-
-                     // fan holders
-                    D() {
-                        U(){
-                            T(-12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
-                            T(12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
-                            T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(4,6);
-                        }
-                        T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
-                        T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
-                        T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(3.2/2,20);
-                    
-                    }
- 
+                  U(){ 
+                    leg();
+                    mirror([1,0,0])leg();
+                  }
                 }
-
-                T(car_x - 20, car_y + railY_yo - 28, 0) Ry(90) Cy(3.4/2,7); 
-    
-            
-                w=15;
-                ri=4;
-
-                U(){  // - blower holes
-                    T(0,-16,10+topZO) CuR(17-3,13-3,20,r=1);  
-                    T(0,-16,3+topZO) CuR(44,w,6,r=ri); 
-                    for(dx=[37/2,-37/2])hull(){
-                        T(dx,-16,3+topZO)CuR(7,w,6,r=ri); 
-                        T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7,w,6,r=ri); 
-                    }
-                
-                    for(dy=[legs_o,-legs_o]) T(-sign(dy)*10,dy*1,-40) CuR(15,w,4,r=2); 
-
-                    T(0, -7.4, -3) Rx(90) forX(14,2) hull()forY(2,2) Cy(6.5/2,3); //holders
-                    T(0, -10, -3) Rx(90) forX(14,2) hull()forY(2,2)Cy(3/2,10); //holders
-                }
-
-            }
         }
     }
 }
 
 caret_asm();
-
 
 
 

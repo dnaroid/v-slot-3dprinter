@@ -1,5 +1,5 @@
-car_y = -00;
-car_x = -00;
+car_y = 100;
+car_x = -100;
 bed_z = -200; // 0..-200
 
 profile_l = 300;  // x9

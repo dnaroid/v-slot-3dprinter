@@ -104,6 +104,20 @@ hotend_cr10()
 }
 
 
+module
+bl_touch()
+{
+    echo("BOM: bl touch");
+    C(0.7, 0.7, 0.7) Rx(180) import_stl("models/bl_touch.stl", convexity = 5);
+}
 
-
+module 
+hulls()
+{
+    for(i=[0:$children-2])
+        hull() {
+            child(i);
+            child(i+1);
+        }
+}
 

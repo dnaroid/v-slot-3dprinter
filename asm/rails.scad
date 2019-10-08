@@ -50,8 +50,8 @@ rails_asm()
         //     T(-10, 0) Cy(1, 50);
         // }
 
-        T(car_x, car_y + railY_yo + railX_yo + 3, railX_z + railX_car_h + 1)
-        corn(30, 2, 30, 45);
+        T(car_x, car_y + railY_yo + railX_yo + 3+15/2, railX_z + railX_car_h + 1)
+        corn(30, 2, 45, 45);
 
         bed_corn_h = 45;
 
