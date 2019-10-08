@@ -43,22 +43,23 @@ caret_asm()
                         T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7+wt,wo,6+wt,r=wr); 
                     }
 
-                    T(0,-8.5+-1,-2) CuR(35,7,14,r=2);// self holder
-                    T(0,-10,-3) hull() { CuR(4,2,12,r=1); T(0,-11,6)CuR(4,2,2,r=1);}
+                    T(0,-8.5+-1,-2+2.6) CuR(35,7,14+4,r=1);// self holder
 
-                    T(car_x - 20, car_y + railY_yo - 28, 0) Ry(90) Cy(4,6); //optical_endstop
-
+                    hull() {
+                        T(car_x - 19.8, car_y + railY_yo - 28, 0) Ry(90) Cy(4,5.5); //optical_endstop
+                        T(car_x - 19.8, car_y + railY_yo - 28-8, 3) Ry(90) Cy(4,5.5); //optical_endstop
+                    }
                      // fan holders
                     D() {
-                        U(){
-                            T(-12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
-                            T(12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(4,6);
-                            T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(4,6);
+                        U(){ hull(){
+                            T(-12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(3,6);
+                            T(-12-4, -24, -14+12+4) Rx(90+ax) Tz(-3.5)Cy(3,6);}
+                            hull(){
+                            T(12, -24, -14+12) Rx(90+ax) Tz(-3.5)Cy(3,6);
+                            T(12+4, -24, -14+12+4) Rx(90+ax) Tz(-3.5)Cy(3,6);}
                         }
-                        T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
-                        T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(3.2/2,20);
-                        T(12, -24, -14-12) Rx(90+ax) Tz(-10)Cy(3.2/2,20);
-                    
+                        T(-12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(2.6/2,20);
+                        T(12, -24, -14+12) Rx(90+ax) Tz(-4)Cy(2.6/2,20);
                     }
  
                 }
@@ -77,7 +78,7 @@ caret_asm()
                         T(dx,-sign(dx+0.01)*legs_o,-40)CuR(7,w,6,r=ri); 
                     }
                 
-                    for(dy=[legs_o,-legs_o]) T(-sign(dy)*10,dy*1,-40) CuR(15,w,4,r=2); 
+                    for(dy=[legs_o,-legs_o]) T(-sign(dy)*10,dy*1,-39) CuR(15,w,4,r=2); 
 
                     T(0, -7.4, -3) Rx(90) forX(14,2) hull()forY(2,2) Cy(6.5/2,3); //holders
                     T(0, -10, -3) Rx(90) forX(14,2) hull()forY(2,2)Cy(3/2,10); //holders
