@@ -1,13 +1,4 @@
 
-module leg() {
-  hulls() {
-    T(nozzle_xo,nozzle_yo,nozzle_z+nozzle_zo) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
-    T(nozzle_xo+3,nozzle_yo,nozzle_z+nozzle_zo+1) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
-    T(nozzle_xo+5,nozzle_yo-3,nozzle_z+nozzle_zo+10) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
-    T(nozzle_xo+3,nozzle_yo-10,nozzle_z+nozzle_zo+50) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
-    T(nozzle_xo+1,nozzle_yo-12,nozzle_z+nozzle_zo+55) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
-  }
-}
 
 module
 caret_asm()
@@ -27,12 +18,14 @@ caret_asm()
 
     explode = 0*150;
 
+    fan_r = 15;
+
     if (!hide_hotend) {
         
         T(car_x + dx, car_y + dy + railY_yo, dz)
         {
             Rz(rz) mirror([1, 0, 0]) hotend_cr10();
-            // T(0, -24-explode, -14) Rx(-90) Rz(0)fan_3010();
+            T(0, -24-explode, -14) Rx(-90+fan_r) Rz(0)fan_3010();
             // T(-10, -24, 7+explode) R(90,0,0) blower_5015();
             // T(0,-10,40)bl_touch();
             C(0.7,0.1,0.1){
@@ -52,7 +45,10 @@ caret_asm()
             channel_r = 2;
             blower_z = 20;
 
-            T(-10, -24, blower_z+explode) R(90,0,0) blower_5015();
+            T(-7.5, -5, blower_z+explode) R(90,0,-90) blower_5015();
+
+
+
 
             T()
             // Rx(90) // for print
@@ -60,19 +56,31 @@ caret_asm()
             // cutYZ(x=-20)
                 D() {
                   U(){ 
+                    // #T(10,30,-30)Cu(10,20,7);
+                    // #T(-10,30,-30)Cu(10,20,7);
   
                   }
 
-                  U(){ 
-                    leg();
-                    mirror([1,0,0])leg();
+                  #U(){ with_mirror()
+                    hulls() {
+                      T(nozzle_xo,nozzle_yo,nozzle_z+nozzle_zo) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
+                      T(nozzle_xo+5,nozzle_yo-1,nozzle_z+nozzle_zo+1) CuR(outlet_r*2,outlet_w,outlet_h,r=outlet_r);
+                      T(nozzle_xo+8,nozzle_yo-3,nozzle_z+nozzle_zo+6) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo+8,nozzle_yo-5,nozzle_z+nozzle_zo+14) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo+3,nozzle_yo-5,nozzle_z+nozzle_zo+20) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo+3,nozzle_yo-10,nozzle_z+nozzle_zo+40) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo+1,nozzle_yo-11,nozzle_z+nozzle_zo+45) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo-4,nozzle_yo-13,nozzle_z+nozzle_zo+50) CuR(channel_t,channel_w,channel_r*2,r=channel_r);
+                      T(nozzle_xo-10,nozzle_yo-15,nozzle_z+nozzle_zo+55) CuR(channel_t,13,channel_r*2,r=channel_r);
+                      T(nozzle_xo-10,nozzle_yo-15,nozzle_z+nozzle_zo+65) CuR(channel_t,13,channel_r*2,r=channel_r);
+                    }
                   }
                 }
         }
     }
 }
 
-caret_asm();
+!caret_asm();
 
 
 

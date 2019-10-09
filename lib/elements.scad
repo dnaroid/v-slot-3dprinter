@@ -111,13 +111,26 @@ bl_touch()
     C(0.7, 0.7, 0.7) Rx(180) import_stl("models/bl_touch.stl", convexity = 5);
 }
 
+
 module 
 hulls()
 {
     for(i=[0:$children-2])
-        hull() {
-            child(i);
-            child(i+1);
+    hull() {
+        child(i);
+        child(i+1);
+    }
+}
+
+
+module 
+with_mirror(x=1,y=0,z=0)
+{ 
+    union() {
+        children();
+        mirror([x,y,z]){
+            children();
         }
+    }
 }
 
