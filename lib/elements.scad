@@ -134,3 +134,16 @@ with_mirror(x=1,y=0,z=0)
     }
 }
 
+module hullX(d,n=2) { 
+    hull() forX(d,n) children(); 
+}
+
+module hullY(d,n=2) { 
+    hull() forY(d,n) children();
+}
+
+module hullZ(d,n=2) { 
+    hull() forZ(d,n) children();
+}
+
+
