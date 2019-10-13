@@ -46,8 +46,8 @@ module
 blower_5015()
 {
     echo("BOM: blower 4010");
-    C(0.3, 0.3, 0.3)
-    import_stl("models/5015_blower_fan.stl", convexity = 5);
+    // C(0.3, 0.3, 0.3)
+    %import_stl("models/5015_blower_fan.stl", convexity = 5);
 }
 
 module
@@ -116,7 +116,7 @@ module
 hulls()
 {
     for(i=[0:$children-2])
-    hull() {
+        hull() {
         child(i);
         child(i+1);
     }
@@ -146,4 +146,25 @@ module hullZ(d,n=2) {
     hull() forZ(d,n) children();
 }
 
+!D() {
+    t=0.4;
+    t2=t*2;
+    t3=t*3;
+    r=1;
+    U(){
+        CuR(10,t3,20,r=1);
+        // #CuR(6,4,10);
+        T(2+t,1,0)CuR(t3,3,20,r=1);
+        T(-2-t,1,0)CuR(t3,3,20,r=1);
+        T(2+t,2+t,0)Cy(r,20);
+        T(-2-t,2+t,0)Cy(r,20);
+    }
+    CuR(10-t2,t,20,r=1);
+    T(2+t,1,0)CuR(t,3-t2,20,r=1);
+    T(-2-t,1,0)CuR(t,3-t2,20,r=1);
+    T(2+t,2+t,0)Cy(r-t,20);
+    T(-2-t,2+t,0)Cy(r-t,20);
 
+    Tz(10)Cu(10);
+    Tz(-10)Cu(10);
+}
