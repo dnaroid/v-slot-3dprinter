@@ -18,14 +18,13 @@ caret_asm()
 
     explode = 0*150;
 
-    fan_r = 15;
+    fan_r = 25;
 
     if (!hide_hotend) {
         
         T(car_x + dx, car_y + dy + railY_yo, dz)
         {
             Rz(rz) mirror([1, 0, 0]) hotend_cr10();
-            T(0, -24-explode, -14) Rx(-90+fan_r) Rz(0)fan_3010();
             // T(20,-10,40)bl_touch();
 
             C(0.7,0.1,0.1){
@@ -45,9 +44,10 @@ caret_asm()
             channel_r = 2;
             blower_z = 12;
 
-            T(-7.5, -5, blower_z+explode) R(90,0,-90) blower_5015();
-
-            !T()
+            // T(-7.5, -5, blower_z+explode) R(90,0,-90) blower_5015();
+            T(10, -34, 32+explode) Rx(90+fan_r) Ry(-90) blower_4020();
+            T(0, -24-explode, -10) Rx(-90+fan_r) Rz(0) fan_4010();
+            T()
             // Rx(90) // for print
             // cutXZ(rx=18, y=-20)
             // cutYZ(x=-15,ry=18)
@@ -132,7 +132,7 @@ caret_asm()
     }
 }
 
-caret_asm();
+!caret_asm();
 
 
 
