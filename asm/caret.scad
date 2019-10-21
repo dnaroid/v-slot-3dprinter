@@ -62,9 +62,8 @@ caret_asm()
 
             T(10, -25, 38+explode) Rx(90+fan_r*0) Ry(-90) blower_4020();
             T(0, -26-explode, -10) Rx(-90+fan_r) Rz(0) fan_4010();
-            T(0, -26-explode, -10) Rx(-90+fan_r) Rz(0) fan_4010();
             !T()
-            Rx(180-10) // for print
+            // Rx(180-10) // for print
             // cutXZ(rx=18, y=-20)
             // cutYZ(x=-15,ry=18)
             U() {
