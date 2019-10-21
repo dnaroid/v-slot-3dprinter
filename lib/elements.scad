@@ -62,8 +62,8 @@ module
 blower_4020()
 {
     echo("BOM: blower 4010");
-    C(0.3, 0.3, 0.3)
-    import_stl("models/4020_blower_fan.stl", convexity = 5);
+    // C(0.3, 0.3, 0.3)
+    %import_stl("models/4020_blower_fan.stl", convexity = 5);
 }
 
 module
@@ -77,7 +77,7 @@ module
 fan_4010()
 {
     echo("BOM: fan 4010");
-    fan(fan40x11);
+    #fan(fan40x11);
 }
 
 module cutXZ(s = 200, y=0, rz=0, rx=0, ry=0) {
@@ -143,6 +143,32 @@ hulls()
         child(i);
         child(i+1);
     }
+}
+
+module snake_node(p, t){
+  r=p[4]/2;
+  T(p[0],p[1],p[2])
+  Ry(90)
+    hull() {
+            Ty(p[3]/2-r/2)Sp(r+t/2);
+            Ty(-p[3]/2+r/2)Sp(r+t/2);
+        }
+}
+
+module 
+snake(nodes,t=0,d=0)
+{
+    for(i=[0:len(nodes)-2])
+        hull() {
+            snake_node(nodes[i],t);
+            snake_node(nodes[i+1],t);
+    }
+    if(d) C(0,0,0)
+        for(i=[0:len(nodes)-1]) {
+            p=nodes[i];
+            T(p[0]-1,p[1]-p[3],p[2]-1)Rx(90)S(0.2)text(str(i));
+            T(p[0],p[1]-p[3]/2,p[2])Rx(90)Cy(0.05,p[3]);
+        }
 }
 
 
@@ -231,12 +257,12 @@ module hullZ(d,n=2) {
 }
 */
 
-/*
-// camera case
 
+// camera case
+/*
 !T() {
     t=0.4*3;
-    *C(.2,.2,.2) {
+    *Rz(90)C(.2,.2,.2) {
         Cu(30,25,1);
         Tz(20/2+.5)Cy(14/2,20);
     }
@@ -244,37 +270,36 @@ module hullZ(d,n=2) {
     // cutXY(z=4,s=100)
     D() {
         U() {
-            Tz(2)CuR(30+4,25+4,12,r=2);
+            Rz(90)Tz(2)CuR(30+4,25+4,12,r=2);
             D() {
-                hullX(6)T(18,0,4)Rx(90)Cy(8/2,20);
+                hullX(6)T(16,0,4)Rx(90)Cy(8/2,20);
                 Rx(90)Cy(30,10);
             }
             D(){ U(){
-                hullX(6)T(18+6,0,4)Rx(90)Cy(8/2,10-.4);
-                T(30,0,4)Ry(90)Cy(8,5);}
-
-                T(30,0,4)Ry(90)Cy(3.8/2,10);
+                hullX(6)T(16+6,0,4)Rx(90)Cy(8/2,10-.4);
+                T(30-2,0,4)Ry(90)Cy(8,5);}
+                T(30-2,0,4)Ry(90)Cy(3.8/2,10);
             }
         }
         D() { 
-            Tz(2)CuR(30+4-t*2,25+4-t*2,12-t*2,r=2-t);
-            for(x=[-12,12])for(y=[-12,12])T(x,y)Cy(5/2,50);
+            Rz(90)Tz(2)CuR(30+4-t*2,25+4-t*2,12-t*2,r=2-t);
+            Rz(90)for(x=[-12,12])for(y=[-12,12])T(x,y)Cy(5/2,50);
         }
-        for(x=[-12,12])for(y=[-12,12])T(x,y,5+.5)Cy(3/2,10);
-        for(x=[-12,12])for(y=[-12,12])T(x,y)Cy(2.4/2,50);
+        Rz(90)for(x=[-12,12])for(y=[-12,12])T(x,y,5+.5)Cy(3/2,10);
+        Rz(90)for(x=[-12,12])for(y=[-12,12])T(x,y)Cy(2.4/2,50);
 
-        Tz(10)Cy(15/2,20); // cam
+        Rz(90)Tz(10)Cy(15/2,20); // cam
 
-        hull() { //pcb
+        Rz(90)hull() { //pcb
             for(x=[-14,14])for(y=[-12.5,12.5])T(x,y)Cy(2.4/2,1.2);
         }
 
-        Tz(-.5)Cu(40,40,.1); // cut
+        Rz(90)Tz(-.5)Cu(40,40,.1); // cut
 
-        T(-15,0,-1)Ry(90)Cy(3.4/2,10); // cable
+        T(12,0,-1)Ry(90)Cy(3.4/2,8); // cable
 
-        T(21,0,4)Rx(90)Cy(3/2,30);
-        T(21,8,4)Rx(90)Cy(3.8/2,6);
+        T(19,0,4)Rx(90)Cy(3/2,30);
+        T(19,8,4)Rx(90)Cy(3.8/2,6);
     }
 }
 */
