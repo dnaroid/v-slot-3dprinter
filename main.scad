@@ -12,6 +12,7 @@ use <lib/v_slot.scad>
 include <asm/bed.scad>
 include <asm/belts.scad>
 include <asm/caret.scad>
+include <asm/caret_parts.scad>
 include <asm/electric.scad>
 include <asm/motors.scad>
 include <asm/rails.scad>
